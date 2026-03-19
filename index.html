@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IUSTORIA | Od paragrafu k praxi</title>
+    
+    <!-- Google Fonts: Oswald (náhrada za Phenomena) & Noto Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (pro rychlý a responzivní styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Nastavení barev a fontů podle IUSTORIA logomanuálu -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        iustoria: {
+                            main: '#FEC812',    // Hořčicová (hlavní)
+                            dark: '#1D1D1B',    // Černá (vedlejší)
+                            darker: '#F0B216',  // Tmavší hořčicová
+                            white: '#FFFFFF'    // Bílá
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Oswald', 'sans-serif'], // Blízká alternativa k Phenomena
+                        body: ['"Noto Serif"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Plynulé scrollování a základní chování */
+        html { scroll-behavior: smooth; }
+        body { background-color: #FFFFFF; color: #1D1D1B; }
+        
+        /* Custom scrollbar pro detaily */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #FEC812; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #F0B216; }
+
+        /* Karta s hover efektem */
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(29, 29, 27, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-iustoria-main selection:text-iustoria-dark">
+
+    <!-- Navigace -->
+    <nav class="fixed w-full bg-iustoria-white/90 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <!-- Zjednodušená vektorová ikona žárovky s paragrafem (Logo motiv) -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                    <path d="M12 2v1"></path>
+                    <path d="M12 7v2"></path>
+                    <path d="M12 13v2"></path>
+                    <path d="M12 17.5V18"></path>
+                    <path d="M16.5 10.5c0-2.5-2-4.5-4.5-4.5S7.5 8 7.5 10.5c0 2 1.5 3.5 2.5 5h4c1-1.5 2.5-3 2.5-5z"></path>
+                </svg>
+                <span class="font-heading font-bold text-2xl tracking-wider text-iustoria-dark">IUSTORIA</span>
+            </div>
+            <a href="#kontakt" class="hidden md:inline-block bg-iustoria-main text-iustoria-dark font-heading font-bold py-2 px-6 rounded-full hover:bg-iustoria-darker transition-colors">Spojme se</a>
+        </div>
+    </nav>
+
+    <!-- Hero Sekce -->
+    <header class="pt-32 pb-20 px-4 md:px-0 bg-iustoria-dark text-iustoria-white text-center flex flex-col items-center justify-center min-h-[70vh] relative overflow-hidden">
+        <!-- Dekorativní prvek na pozadí -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-iustoria-main rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-iustoria-darker rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h1 class="font-heading font-bold text-5xl md:text-7xl mb-6 leading-tight">Cesta od paragrafu <br> <span class="text-iustoria-main">k reálné praxi</span></h1>
+            <p class="text-lg md:text-xl mb-10 text-gray-300 max-w-2xl mx-auto leading-relaxed">Zapomeňte na nudné definice. Advokacie v 21. století je o strategii, byznysu, technologiích (včetně AI) a ochraně klientů. Pojďme se podívat, jak to funguje doopravdy.</p>
+            <a href="#rozdily" class="bg-iustoria-main text-iustoria-dark font-heading font-bold text-lg py-4 px-10 rounded-full hover:bg-iustoria-darker transition-all hover:scale-105 inline-block shadow-[0_0_20px_rgba(254,200,18,0.4)]">Začít prohlídku</a>
+        </div>
+    </header>
+
+    <!-- Právník vs. Advokát -->
+    <section id="rozdily" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="font-heading font-bold text-4xl md:text-5xl text-iustoria-dark mb-4">Právník ≠ Advokát</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Základní pravidlo zní: Každý advokát je právník, ale ne každý právník je advokát. Jaký je v tom rozdíl?</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Karta Právník -->
+            <div class="bg-gray-50 p-8 rounded-2xl border-l-8 border-gray-300 hover-card relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 class="font-heading font-bold text-3xl mb-4">Právník</h3>
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-start gap-3">
+                        <span class="text-gray-400 mt-1">✔</span>
+                        <span>Absolvent magisterského studia práv (Mgr.).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-gray-400 mt-1">✔</span>
+                        <span>Může pracovat na úřadě, ve firmě (podnikový právník), na policii.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-gray-400 mt-1">✘</span>
+                        <span>Nemůže vás zastupovat před soudem jako "advokát" (jen jako obecný zmocněnec s velkými omezeními).</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Karta Advokát -->
+            <div class="bg-iustoria-main/10 p-8 rounded-2xl border-l-8 border-iustoria-main hover-card relative overflow-hidden">
+                 <div class="absolute top-0 right-0 p-4 opacity-10 text-iustoria-main">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="font-heading font-bold text-3xl mb-4">Advokát</h3>
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-start gap-3">
+                        <span class="text-iustoria-dark mt-1 font-bold">✔</span>
+                        <span>Právník, který splnil další přísné podmínky.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-iustoria-dark mt-1 font-bold">✔</span>
+                        <span>Zapsán v seznamu České advokátní komory (ČAK).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-iustoria-dark mt-1 font-bold">✔</span>
+                        <span>Plně profesionální obhájce a zástupce. Váže ho mlčenlivost a je pojištěn.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jak se stát advokátem (Timeline) -->
+    <section class="py-20 bg-gray-50 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-heading font-bold text-4xl text-center mb-16">Cesta k titulu Advokát</h2>
+            
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-transparent before:via-iustoria-main before:to-transparent">
+                
+                <!-- Krok 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-iustoria-white bg-iustoria-main shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-iustoria-dark font-bold z-10">1</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="font-heading font-bold text-xl mb-2">Právnická fakulta</h3>
+                        <p class="text-gray-600">5 let náročného magisterského studia. Učíte se teorii, zákony a principy fungování státu.</p>
+                    </div>
+                </div>
+
+                <!-- Krok 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-iustoria-white bg-iustoria-main shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-iustoria-dark font-bold z-10">2</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="font-heading font-bold text-xl mb-2">Advokátní koncipient</h3>
+                        <p class="text-gray-600">Minimálně 3 roky reálné praxe pod dohledem zkušeného advokáta. Řešíte případy, chodíte k soudu.</p>
+                    </div>
+                </div>
+
+                <!-- Krok 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-iustoria-white bg-iustoria-main shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-iustoria-dark font-bold z-10">3</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="font-heading font-bold text-xl mb-2">Advokátní zkoušky</h3>
+                        <p class="text-gray-600">Několikadenní písemná a ústní zkouška ze všech oborů práva.</p>
+                    </div>
+                </div>
+
+                <!-- Krok 4 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-iustoria-white bg-iustoria-dark text-iustoria-main shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 font-bold z-10">4</div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-iustoria-dark text-iustoria-white p-6 rounded-xl shadow-md border border-gray-800">
+                        <h3 class="font-heading font-bold text-xl text-iustoria-main mb-2">Slib a zápis do ČAK</h3>
+                        <p class="text-gray-300">Po složení slibu se stáváte advokátem. Můžete si otevřít vlastní praxi a zastupovat klienty naplno.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Úřad vs. Advokacie (Propojení na jejich obor) -->
+    <section class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="bg-iustoria-main rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-iustoria-dark mb-6">Správní úřad<br>vs. Advokacie</h2>
+                <p class="text-xl mb-6 text-iustoria-dark font-medium">Váš obor (Veřejnosprávní činnost) vás připravuje mj. na úřady. Jak se to liší od naší práce?</p>
+                <div class="space-y-4">
+                    <div class="bg-white/30 p-4 rounded-lg backdrop-blur-sm">
+                        <h4 class="font-bold text-xl mb-1">Na úřadě (stát a samospráva):</h4>
+                        <p>Zastupujete veřejnou moc. Rozhodujete nezávisle, podle svého nejlepšího svědomí a vědomí. Řídíte se striktně zákony a máte jistotu a stabilitu rostoucího platu.</p>
+                    </div>
+                    <div class="bg-iustoria-dark text-iustoria-white p-4 rounded-lg">
+                        <h4 class="font-bold text-xl text-iustoria-main mb-1">V advokacii (Soukromý sektor):</h4>
+                        <p>Zastupujete <strong>klienta</strong>. Vaším úkolem je bojovat za jeho zájmy v mezích zákona. Někdy je to o hledání právních kliček. Je to byznys, adrenalin, kreativita a vysoká odpovědnost za klienta a za sebe.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <!-- Ilustrační blok nebo citát -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-iustoria-dark text-center rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <p class="text-2xl font-body italic mb-6">"Právník na úřadu  zkoumá, zda něco lze podle zákona zakázat nebo povolit. Má chránit především veřejný zájem. Advokát chrání soukromý zájem svého klienta a hledá cestu k povolení záměru."</p>
+                    <div class="font-heading font-bold text-iustoria-dark text-xl">— Realita praxe</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Co reálně děláme & AI v právu -->
+    <section class="py-20 bg-gray-900 text-iustoria-white px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-4xl md:text-5xl text-iustoria-main mb-4">Co reálně děláme v IUSTORIA?</h2>
+                <p class="text-lg text-gray-400">Právo není jen o sezení v knihovně. Je to aktivní obrana podnikatelů.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Smlouvy -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:bg-gray-700 transition-colors border-b-4 border-gray-700 hover:border-iustoria-main">
+                    <div class="text-iustoria-main mb-4">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-3">Smluvní právo</h3>
+                    <p class="text-gray-400">Píšeme smlouvy pro firmy tak, aby je nikdo nemohl podvést. Od IT vývojářů po e-shopy.</p>
+                </div>
+
+                <!-- Spory -->
+                <div class="bg-gray-800 p-8 rounded-xl hover:bg-gray-700 transition-colors border-b-4 border-gray-700 hover:border-iustoria-main">
+                    <div class="text-iustoria-main mb-4">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-3">Soudní spory</h3>
+                    <p class="text-gray-400">Když selže dohoda, hájíme zájmy klientů před soudem. Argumentace, důkazy, taktika.</p>
+                </div>
+
+                <!-- AI Compliance -->
+                <div class="bg-iustoria-main text-iustoria-dark p-8 rounded-xl shadow-[0_0_30px_rgba(254,200,18,0.2)] transform md:-translate-y-4">
+                    <div class="mb-4">
+                    </div>
+                    <h3 class="font-heading font-bold text-2xl mb-3">AI & Právo (budoucnost)</h3>
+                    <p class="font-medium">Radíme firmám, jak používat umělou inteligenci. Zajišťujeme, aby AI nenarušila GDPR nebo autorská práva. I my sami v kanceláři AI využíváme k rešerším.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Kontakt -->
+    <footer id="kontakt" class="bg-iustoria-white pt-20 pb-10 px-4 text-center border-t border-gray-200">
+        <div class="max-w-4xl mx-auto">
+            <!-- Žárovka v patičce podle manuálu -->
+            <div class="flex justify-center mb-8">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#FEC812" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="10" r="6"></circle>
+                    <path d="M10 22h4"></path>
+                    <path d="M12 16v2"></path>
+                    <path d="M12 20v2"></path>
+                    <!-- Paragraf uvnitř -->
+                    <path d="M13.5 8.5c0-1.5-3-1.5-3 0s3 1.5 3 3-3 1.5-3 0"></path>
+                </svg>
+            </div>
+            
+            <h2 class="font-heading font-bold text-3xl md:text-4xl text-iustoria-dark mb-6">Zajímá vás víc?</h2>
+            <p class="text-lg text-gray-600 mb-8">Propojme se na LinkedInu nebo se podívejte na náš web. Budování sítě (networking) je základ každého úspěchu.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                <a href="https://iustoria.cz" class="bg-iustoria-dark text-iustoria-white font-bold py-3 px-8 rounded-full hover:bg-black transition-colors">www.iustoria.cz</a>
+                <a href="https://www.linkedin.com/in/gabriel-kozik/" class="border-2 border-iustoria-dark text-iustoria-dark font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors">Můj LinkedIn</a>
+            </div>
+
+            <p class="text-sm text-gray-400">© 2026 IUSTORIA. Vytvořeno  pro studenty SŠ Gemini Brno.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
